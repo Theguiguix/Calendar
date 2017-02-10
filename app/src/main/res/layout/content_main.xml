@@ -17,7 +17,7 @@
         android:text="Aujourd'hui"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/toggleButtonProposition"
+        android:layout_below="@+id/topButtonLayout"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginLeft="25dp"
@@ -33,16 +33,19 @@
         android:layout_below="@+id/textView3"
         android:layout_centerHorizontal="true">
 
-        <GridLayout
+        <com.miage.soorak.calendar.Tuile
             android:layout_width="match_parent"
             android:padding="2dp"
             android:layout_height="50dp"
-            android:columnCount="2"
+            android:columnCount="3"
             android:rowCount="2"
-            android:background="@android:color/darker_gray">
+            android:background="@android:color/darker_gray"
+            android:id="@+id/tuile1">
+
+            <!--suppress AndroidDomInspection -->
             <TextView
                 android:layout_height="25dp"
-                android:layout_column="0"
+                android:layout_column="1"
                 android:layout_row="0"
                 android:text="Donner à manger au chat">
             </TextView>
@@ -50,34 +53,49 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="1"
+                android:layout_column="0"
                 android:layout_row="0"
                 android:layout_rowSpan="2"
-                android:layout_gravity="right"
                 android:id="@+id/imageView2"
+                android:layout_marginRight="3dp"
                 app:srcCompat="@mipmap/george" />
 
+            <!--suppress AndroidDomInspection -->
             <TextView
                 android:layout_height="25dp"
-                android:layout_column="0"
+                android:layout_column="1"
                 android:layout_row="1"
                 android:text="19h00"
                 android:id="@+id/textView4">
             </TextView>
 
-        </GridLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="0"
+                android:layout_rowSpan="2"
+                android:layout_gravity="right"
+                android:layout_marginTop="7dp"
+                app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+                android:id="@+id/imageView5" />
 
-        <GridLayout
+        </com.miage.soorak.calendar.Tuile>
+
+        <com.miage.soorak.calendar.Tuile
             android:layout_width="match_parent"
             android:padding="2dp"
             android:layout_marginTop="10dp"
             android:layout_height="50dp"
-            android:columnCount="2"
-            android:rowCount="2"
-            android:background="@android:color/darker_gray">
+            android:columnCount="3"
+            android:rowCount="3"
+            android:background="@android:color/darker_gray"
+            android:id="@+id/tuile2">
+
+            <!--suppress AndroidDomInspection -->
             <TextView
                 android:layout_height="25dp"
-                android:layout_column="0"
+                android:layout_column="1"
                 android:layout_row="0"
                 android:text="Donner à manger au chat">
             </TextView>
@@ -85,50 +103,64 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_column="1"
+                android:layout_column="0"
                 android:layout_row="0"
                 android:layout_rowSpan="2"
-                android:layout_gravity="right"
+                android:layout_marginRight="3dp"
                 app:srcCompat="@mipmap/audrey"
                 android:id="@+id/imageView3" />
 
+            <!--suppress AndroidDomInspection -->
             <TextView
                 android:layout_height="25dp"
-                android:layout_column="0"
+                android:layout_column="1"
                 android:layout_row="1"
                 android:text="19h00"
                 android:id="@+id/textView5">
             </TextView>
 
-        </GridLayout>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_column="2"
+                android:layout_row="0"
+                android:layout_rowSpan="2"
+                android:layout_gravity="right"
+                android:layout_marginTop="7dp"
+                app:srcCompat="@android:drawable/ic_menu_sort_by_size"
+                android:id="@+id/imageView4" />
+
+        </com.miage.soorak.calendar.Tuile>
 
     </LinearLayout>
 
-    <ToggleButton
-        android:layout_width="wrap_content"
+    <GridLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/toggleButtonTaches"
-        android:textOff="Tâches"
-        android:textOn="Tâches"
-        android:checked="true"
-        android:layout_marginLeft="51dp"
-        android:layout_marginStart="51dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:textColorLink="?attr/colorPrimary" />
+        android:columnCount="2"
+        android:id="@+id/topButtonLayout">
 
-    <ToggleButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/toggleButtonProposition"
-        android:textOff="Proposition"
-        android:textOn="Proposition"
-        android:layout_marginLeft="23dp"
-        android:layout_marginStart="23dp"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/toggleButtonTaches"
-        android:layout_toEndOf="@+id/toggleButtonTaches"
-        android:textColorLink="?attr/colorPrimary" />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggleButtonTaches"
+            android:text="Tâches"
+            android:checked="true"
+            android:layout_column="0"
+            android:layout_marginLeft="90dp"
+            android:background="@color/redColor" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggleButtonProposition"
+            android:text="Proposition"
+            android:layout_toRightOf="@+id/toggleButtonTaches"
+            android:layout_toEndOf="@+id/toggleButtonTaches"
+            android:layout_column="1"
+            android:layout_marginLeft="5dp"
+            android:background="@color/tuileColor"/>
+
+    </GridLayout>
 
 </RelativeLayout>

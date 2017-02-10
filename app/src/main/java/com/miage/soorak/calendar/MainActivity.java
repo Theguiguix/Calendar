@@ -18,6 +18,8 @@ import android.widget.ToggleButton;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    boolean propositionClicked = false;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,15 +45,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        final ToggleButton buttonTache = (ToggleButton) findViewById(R.id.toggleButtonTaches);
-        final ToggleButton buttonProposition = (ToggleButton) findViewById(R.id.toggleButtonProposition);
+        final Button buttonTache = (Button) findViewById(R.id.toggleButtonTaches);
+        final Button buttonProposition = (Button) findViewById(R.id.toggleButtonProposition);
 
         buttonTache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(buttonProposition.isChecked()) {
-                    buttonProposition.setChecked(false);
-                    buttonTache.setChecked(true);
+                if(propositionClicked) {
+                    propositionClicked = false;
                 }
             }
         });
@@ -59,10 +60,25 @@ public class MainActivity extends AppCompatActivity
         buttonProposition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(buttonTache.isChecked()) {
-                    buttonProposition.setChecked(true);
-                    buttonTache.setChecked(false);
+                if(!propositionClicked) {
+                    propositionClicked = true;
                 }
+            }
+        });
+
+        final Tuile tuile1 = (Tuile) findViewById(R.id.tuile1);
+        tuile1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tuile1.callOnClick();
+            }
+        });
+
+        final Tuile tuile2 = (Tuile) findViewById(R.id.tuile2);
+        tuile2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                tuile2.callOnClick();
             }
         });
     }
