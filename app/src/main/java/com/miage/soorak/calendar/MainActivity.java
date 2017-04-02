@@ -1,8 +1,12 @@
 package com.miage.soorak.calendar;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -27,6 +31,7 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        // Bouton pour ajouter des Tâches (doit renvoyer vers une activiter d'ajout de tache
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +53,7 @@ public class MainActivity extends AppCompatActivity
         final Button buttonTache = (Button) findViewById(R.id.toggleButtonTaches);
         final Button buttonProposition = (Button) findViewById(R.id.toggleButtonProposition);
 
+        // On gère l'appuis des deux boutons (ne fait rien pour le moment)
         buttonTache.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -56,7 +62,6 @@ public class MainActivity extends AppCompatActivity
                 }
             }
         });
-
         buttonProposition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -70,6 +75,7 @@ public class MainActivity extends AppCompatActivity
         tuile1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // C.F. classe Tuile
                 tuile1.callOnClick();
             }
         });
@@ -78,6 +84,7 @@ public class MainActivity extends AppCompatActivity
         tuile2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // C.F. classe Tuile
                 tuile2.callOnClick();
             }
         });
@@ -121,15 +128,22 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        if (id == R.id.nav_liste_taches) {
+            // On créer l'ActivityMain (la liste des taches)
+            Intent menuIntent = new Intent(this, MainActivity.class);
+            // On switch vers cette vue
+            startActivity(menuIntent);
 
-        } else if (id == R.id.nav_slideshow) {
+            // /!\ ATTENTION : La création d'une nouvelle Activité semble ne pas détruire l'ancienne et donc prends de plus en plus de RAM ! /!\
+        } else if (id == R.id.nav_calendrier) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_liste_menus) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_liste_course) {
+
+        } else if (id == R.id.nav_parametres) {
+
+        } else if (id == R.id.nav_aide_commentaires) {
 
         }
 

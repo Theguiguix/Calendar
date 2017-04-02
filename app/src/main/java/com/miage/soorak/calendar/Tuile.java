@@ -35,15 +35,22 @@ public class Tuile extends GridLayout {
     @Override
     public boolean callOnClick() {
         LinearLayout.LayoutParams newParams;
+
         if(!this.extended) {
+            // Si la tuile n'était pas étendu on l'étend (on ajoute 200 pixels de hauteur)
             newParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(this.getWidth(), this.getHeight() + 200));
             this.extended = true;
         } else {
+            // Si la tuile était étendu on la rétracte (on retire 200 pixels de hauteur)
             newParams = new LinearLayout.LayoutParams(new ViewGroup.LayoutParams(this.getWidth(), this.getHeight() - 200));
             this.extended = false;
         }
+
+        //On reprend le margin des paramêtre existants pour les nouveaux paramètres
         LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) getLayoutParams();
         newParams.setMargins(params.leftMargin, params.topMargin, params.rightMargin, params.bottomMargin);
+
+        // On set les nouveau paramètres
         this.setLayoutParams(newParams);
         return true;
     }
