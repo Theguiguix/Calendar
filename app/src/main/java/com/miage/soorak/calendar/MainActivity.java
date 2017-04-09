@@ -1,11 +1,13 @@
 package com.miage.soorak.calendar;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.ColorRes;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,7 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +37,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Ajout d'une Tuile", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -55,6 +60,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 if(propositionClicked) {
                     propositionClicked = false;
+                    buttonTache.setBackgroundColor(Color.parseColor("#8e0000"));
+                    buttonProposition.setBackgroundColor(Color.parseColor("#e6e6e6"));
                 }
             }
         });
@@ -63,6 +70,8 @@ public class MainActivity extends AppCompatActivity
             public void onClick(View view) {
                 if(!propositionClicked) {
                     propositionClicked = true;
+                    buttonProposition.setBackgroundColor(Color.parseColor("#8e0000"));
+                    buttonTache.setBackgroundColor(Color.parseColor("#e6e6e6"));
                 }
             }
         });
@@ -130,10 +139,9 @@ public class MainActivity extends AppCompatActivity
             // On switch vers cette vue
             startActivity(menuIntent);
 
-            // /!\ ATTENTION : La création d'une nouvelle Activité semble ne pas détruire l'ancienne et donc prends de plus en plus de RAM ! /!\
+            // /!\ ATTENTION : La création d'une nouvelle Activité semble de pas détruire l'ancienne et donc prends de plus en plus de RAM ! /!\
         } else if (id == R.id.nav_calendrier) {
-            Intent menuIntent = new Intent(this, CalendarActivity.class);
-            startActivity(menuIntent);
+
         } else if (id == R.id.nav_liste_menus) {
 
         } else if (id == R.id.nav_liste_course) {

@@ -2,6 +2,7 @@ package com.miage.soorak.calendar;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -13,6 +14,7 @@ import android.widget.LinearLayout;
 public class Tuile extends GridLayout {
 
     private boolean extended;
+    private String data;
 
     public Tuile(Context context){
         super(context);
